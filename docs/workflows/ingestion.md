@@ -2,6 +2,10 @@
 
 Status: quy trình thiết kế; chưa triển khai importer/OCR. Bắt đầu bằng pilot nhỏ ở product.md.
 
+Công cụ độc lập [MinerU local](mineru-local.md) đã được cài và smoke test trên PDF tự soạn
+ngày 2026-10-15, có hướng dẫn khắc phục lỗi tải và kết quả thực tế. Đây là bước chuẩn bị;
+chưa có adapter nối đầu ra MinerU vào thẻ `xqt`, chưa thử sách thật và còn lỗi dấu tiếng Việt.
+
 ## 1. Intake
 
 Đăng ký sách/ấn bản/ngôn ngữ/quyền truy cập. Giữ raw file bất biến, SHA-256, tổng trang, ngày nhập, số trang PDF và số trang in riêng. Phát hiện trùng bytes và gần trùng trang; bản scan khác nhau vẫn có provenance riêng. Không bỏ lời bình khác nhau chỉ vì cùng thế cờ.

@@ -16,7 +16,7 @@ Kiểm tra ngày 2026-10-15 trên Linux x86_64, Rust **1.98.1 (48a229cea 2026-09
 
 Các tests bao phủ stale khi chỉ đổi prose, dependency thiếu, ID trùng, metadata lạ, tự gắn kernel_checked, sai lượt/dimension FEN, metadata thiếu/nhân đôi, conflicted exclusion, nguồn private xuyên chuỗi phụ thuộc, rejected dependency, loại tham chiếu sai, region sai, thiếu reasoning và relation tranh luận có chu trình.
 
-## Chưa chạy
+## Chưa chạy trong bootstrap
 
 - Sách thật của người dùng: NOT_RUN, chưa có file được nhập trong tác vụ.
 - OCR chữ/hình và đánh giá accuracy: NOT_RUN.
@@ -56,3 +56,21 @@ Thử workflow bằng ba agent ít context trên yêu cầu giả định, chỉ
 Các ca này là bằng chứng hành vi tư vấn giới hạn, không là kiểm chứng mọi prompt, legal replay,
 OCR accuracy hoặc integration Pikafish/Lean/Qdrant. Sau ca revision, đã làm rõ trong skills rằng
 draft/rejected vẫn qua validation và dependency tới claim rejected làm bản thay thế mất eligibility.
+
+## Công cụ MinerU độc lập — 2026-10-15
+
+Trên macOS 26.5.2 arm64, RAM 16 GB, MinerU 4.0.12/Python 3.12.15 đã chạy inference local.
+[Quy trình, mẫu tự soạn, snapshot và kết quả OCR](workflows/mineru-local.md) ghi các lệnh đã dùng,
+lỗi chứng chỉ uv, cách chuyển tải VLM từ Xet sang HTTP và giới hạn của phép thử.
+
+| Kiểm tra thực tế | Kết quả |
+| --- | --- |
+| `mineru version --json`, `uv pip check` | PASS — 4.0.12/3.12.15, 122 packages tương thích |
+| `mineru-kit models verify --tier standard` | PASS — Torch small models và GGUF VLM đều ok |
+| PDF có text layer, Flash/txt | PASS — giữ 6/6 dòng nguyên văn |
+| PDF chỉ chứa ảnh, Basic và Standard | PASS thực thi; mỗi chế độ khớp 4/6 dòng nguyên văn, 5/6 nếu bỏ whitespace |
+| Chất lượng tiếng Việt trên mẫu | KNOWN_ERRORS — cả hai chế độ OCR còn sai dấu/ký tự |
+| `mineru-kit webui --help` | PASS — kiểm tra lệnh; khởi chạy/chuyển đổi qua WebUI NOT_RUN |
+
+PDF sách thật, hình cờ và benchmark accuracy: NOT_RUN. Adapter OCR của `xqt` vẫn planned;
+kết quả công cụ độc lập không chứng nhận importer, FEN, thẻ tri thức hoặc index.

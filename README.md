@@ -21,7 +21,7 @@ mkdir -p build
 cargo run --locked -p xqt -- index-plan knowledge/examples --public > build/index-plan.json
 ```
 
-`index-plan` **không gọi embedding, không kết nối Qdrant**. Kết quả luôn ghi `not_embedded`, `editorial_metadata_only`. Chưa chạy OCR/Pikafish/Lean thật. Xem [bằng chứng kiểm tra](docs/verification.md).
+`index-plan` **không gọi embedding, không kết nối Qdrant**. Kết quả luôn ghi `not_embedded`, `editorial_metadata_only`. CLI chưa tích hợp OCR/Pikafish/Lean. [MinerU local](docs/workflows/mineru-local.md) đã chạy độc lập trên PDF tự soạn; OCR tiếng Việt còn lỗi dấu, chưa thử sách thật. Xem [bằng chứng kiểm tra](docs/verification.md).
 
 ## Kiến trúc đã chọn
 

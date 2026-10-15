@@ -20,6 +20,12 @@ Chủ dự án chọn 2–3 nguồn đại diện, quyền truy cập, gold spli
 
 Bắt đầu text layer; benchmark OCR chữ và board recognizer; giữ top candidates; người duyệt ghép cây biến.
 
+## Preparation — 2026-10-15
+
+[MinerU local](../workflows/mineru-local.md) đã cài và chạy độc lập trên hai PDF một trang tự soạn,
+gồm text layer và image-only; đã lưu quy trình tải model và giới hạn tiếng Việt. Importer,
+mapping sang SourceSpan, retry và pilot sách thật vẫn planned. Chuẩn bị công cụ chưa hoàn tất item 010.
+
 ## Review boundary
 
 Một chương truy về đúng trang/hình, retry không tạo trùng, unknown không bị điền mặc định; kiểm tra asset hash thực.
@@ -31,3 +37,4 @@ Domain shift scan đen trắng; thiếu model weights; ký pháp và branch alig
 ## Follow-ups
 
 Bổ sung type/schema theo dữ liệu pilot, migration có fixture.
+Đo lỗi chữ/dấu tiếng Việt và scan đen trắng trên nguồn pilot có quyền truy cập trước khi chọn engine OCR.
