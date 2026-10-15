@@ -1,0 +1,1 @@
+Ví dụ gốc của Xiangqi Tutor. Bố trí mẫu khai báo lượt Đỏ bằng trường w trong FEN. Đây không phải trích sách và không phải kết luận chiến thuật.
