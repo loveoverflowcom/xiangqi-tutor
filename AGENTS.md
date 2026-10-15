@@ -2,6 +2,11 @@
 
 Đọc README, docs/review.md, hợp đồng liên quan và docs/work-plan/ trước khi sửa. Dùng Rust 1.98.1 được pin trong rust-toolchain.toml. Không tự thay toolchain.
 
+Đọc [bản đồ skills](.agents/skills/README.md) và chọn đúng chủ sở hữu cho tác vụ. Dùng
+`xiangqi-work-item` cho công việc từ queue/issue; `xiangqi-engineering` khi sửa code;
+`xiangqi-code-review` cho review. Các skill ingest/knowledge-edit/verify/index/tutor sở hữu
+workflow chuyên môn riêng. Chỉ nạp references cần thiết; không xem skill là bằng chứng adapter đã chạy.
+
 - Chỉ làm phạm vi được yêu cầu. Logic thuần, kiểu dữ liệu rõ, IO ở biên. Giữ workspace nhỏ khi chưa có consumer.
 - Không upload sách/scan/khóa API/dữ liệu cá nhân/weights vào repo công khai. Chỉ mẫu tự soạn hoặc quyền phân phối đã xác nhận.
 - Không đoán quân, lượt đi, nhánh biến hay bộ luật để làm kết quả có vẻ hợp lệ. `unknown` cần tồn tại ở staging.
@@ -15,4 +20,8 @@
 - Cập nhật docs trạng thái implemented/planned/NOT_RUN đúng thực tế. Không giả lập một adapter rồi báo đã tích hợp.
 - Kiểm thử các ranh giới tin cậy: stale snapshot, sai loại tham chiếu, nguồn private, claim chưa duyệt, giả mạo proof.
 - Chạy fmt, clippy, test, demo CLI và kiểm tra link liên quan. Không ghi thành công khi chưa chạy.
+- Khi chỉ sửa skills/tài liệu, chạy `python3 scripts/check_skills.py`,
+  `python3 -m unittest discover -s scripts -p 'test_*.py'`, `python3 scripts/check_links.py`
+  và `git diff --check`; không cần chạy lại Rust nếu không chạm code/contract/corpus/cấu hình Rust.
+  Thay đổi code/contract/corpus vẫn chạy các cổng Rust/CLI hiện có ở README.
 - Cập nhật queue bằng architecture-aware-work-planner khi xuất hiện nhiều bước/follow-up; không mở rộng hạ tầng vì dự đoán.

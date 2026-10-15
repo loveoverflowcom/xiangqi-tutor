@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiangqi Engineering"
+  short_description: "Build typed Rust boundaries and honest checks"
+  default_prompt: "Use $xiangqi-engineering to implement a Rust change with invariant based verification."

@@ -27,3 +27,32 @@ Các tests bao phủ stale khi chỉ đổi prose, dependency thiếu, ID trùng
 - Docker Compose: NOT_RUN; môi trường này không có Docker. Cấu hình pin image và loopback, không thay thế integration test.
 
 Workflow GitHub Actions thực hiện lại kiểm tra Rust, corpus, index-plan và link trên push develop/PR. Tình trạng từng run ở trang Actions của repository; không dùng tài liệu này thay log CI theo commit.
+
+## Bộ skills repository — 2026-10-15
+
+Phạm vi: 8 skills, metadata agent, routing từ AGENTS/README và cổng Python trong CI.
+Không đổi code Rust, contract hoặc corpus. Kiểm tra local trên Linux với Python 3.12.14:
+
+| Kiểm tra | Kết quả |
+| --- | --- |
+| Skill Creator quick_validate, từng thư mục | PASS — 8 skills |
+| `python3 scripts/check_skills.py` | PASS — 8 skills và agent interfaces |
+| `python3 -m unittest discover -s scripts -p 'test_*.py'` | PASS — 11 test methods, có metadata bị sửa lỗi và CLI exit status |
+| `python3 scripts/check_links.py` | PASS — 114 liên kết local |
+| `git diff --check` | PASS |
+| Rust/CLI local trong tác vụ skills | NOT_RUN — không đổi Rust/contract/corpus; môi trường không có cargo/rustup |
+
+Cổng `skills` trong CI chạy checker, Python tests, link và diff; cổng `contracts` giữ các kiểm tra Rust/CLI hiện có.
+Các kết quả CI phải đọc theo SHA của PR, không suy từ PASS bootstrap ở trên.
+
+Thử workflow bằng ba agent ít context trên yêu cầu giả định, chỉ đọc tài liệu và không dùng hệ thống live:
+
+| Tình huống | Hành vi quan sát |
+| --- | --- |
+| OCR mơ hồ Xe/Pháo, ô bị crop, thiếu lượt, muốn public sách cá nhân | Giữ staging/unknown/private; không tạo FEN, hash hoặc quyền nguồn giả |
+| Báo cáo gián tiếp depth 22/+500/một PV; muốn gọi nước duy nhất buộc thắng và Lean chứng minh | Hạn chế kết luận, không giả run/proof; giao bài kiểm tra lập luận thay vì bịa thế/nước |
+| Sửa reasoning nhưng giữ revision; B stale; A2 supersedes A | Yêu cầu revision/review và xem từng consumer; không repin hàng loạt, không coi supersedes là retirement tự động |
+
+Các ca này là bằng chứng hành vi tư vấn giới hạn, không là kiểm chứng mọi prompt, legal replay,
+OCR accuracy hoặc integration Pikafish/Lean/Qdrant. Sau ca revision, đã làm rõ trong skills rằng
+draft/rejected vẫn qua validation và dependency tới claim rejected làm bản thay thế mất eligibility.

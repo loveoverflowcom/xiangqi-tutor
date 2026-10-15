@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiangqi Code Review"
+  short_description: "Review correctness, trust boundaries and evidence"
+  default_prompt: "Use $xiangqi-code-review to review this Xiangqi Tutor diff and report actionable findings."

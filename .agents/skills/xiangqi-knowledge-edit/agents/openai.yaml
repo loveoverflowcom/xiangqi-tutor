@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiangqi Knowledge Editor"
+  short_description: "Edit claims, conditions and revision dependencies"
+  default_prompt: "Use $xiangqi-knowledge-edit to revise this claim while preserving evidence and history."

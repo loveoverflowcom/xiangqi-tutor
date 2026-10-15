@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiangqi Knowledge Index"
+  short_description: "Plan derived indexes and evaluate retrieval safely"
+  default_prompt: "Use $xiangqi-index to validate the corpus and prepare a public index plan."
