@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiangqi Tutor"
+  short_description: "Teach sourced lessons and record learning feedback"
+  default_prompt: "Use $xiangqi-tutor to explain this position with sources and a short exercise."

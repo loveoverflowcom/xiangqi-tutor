@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiangqi Book Ingestion"
+  short_description: "Prepare book OCR and board diagrams with provenance"
+  default_prompt: "Use $xiangqi-ingest to prepare a small book pilot with page and diagram provenance."

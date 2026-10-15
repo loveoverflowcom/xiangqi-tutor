@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiangqi Work Item"
+  short_description: "Deliver one scoped Xiangqi Tutor work item"
+  default_prompt: "Use $xiangqi-work-item to implement the next ready Xiangqi Tutor work item."

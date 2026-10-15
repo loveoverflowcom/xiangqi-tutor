@@ -54,11 +54,17 @@ Không phân phối sách, model OCR hay NNUE trong repo công khai. Dữ liệu
 
 ## Phát triển
 
+Agent làm việc theo [bản đồ 8 skills](.agents/skills/README.md): điều phối, engineering, review,
+nhập sách/OCR, hiệu đính, kiểm chứng, index và gia sư. Các skill nằm trong repository;
+OCR/Pikafish/Lean/retrieval vẫn cần adapter thật trước khi có bằng chứng live.
+
 ```bash
 cargo fmt --all -- --check
 cargo clippy --workspace --all-targets --locked -- -D warnings
 cargo test --workspace --locked
 python3 scripts/check_links.py
+python3 scripts/check_skills.py
+python3 -m unittest discover -s scripts -p 'test_*.py'
 ```
 
 Dịch vụ vector cho phát triển, chạy tùy chọn bằng `docker compose up -d qdrant`. Docker không bắt buộc để kiểm tra corpus; xem [config](config/README.md).

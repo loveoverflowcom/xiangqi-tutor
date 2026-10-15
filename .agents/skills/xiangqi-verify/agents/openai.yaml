@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xiangqi Verification"
+  short_description: "Check positions, replay, engine and proof evidence"
+  default_prompt: "Use $xiangqi-verify to assess this position and identify which verification gates can run."
